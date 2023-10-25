@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jody Yuantoro | Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #352F44;
+    }
+    .container {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 50vw;
+      padding: 42px;
+      background-color: #5C5470;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .btn {
+        border: 0px;
+      background-color: #B9B4C7;
+      font-size: 18px;
+      margin: 6px;
+    }
+    .btn-secondary {
+        color: #352F44;
+        background-color: #FAF0E6;
+    }
+    #result {
+      font-size: 24px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form>
+      <div class="row mt-3 mb-4">
+        <input type="number" id="result" placeholder="0" readonly>
+      </div>
+      <div class="row">
+        <input class="mb-3 form-control" type="number" id="input1" placeholder="Number 1">
+        <input class="mb-3 form-control" type="number" id="input2" placeholder="Number 2">
+      </div>
+        <div class="col">
+          <button type="button" class="btn  btn-md" onclick="calc('plus')">+</button>
+          <button type="button" class="btn  btn-md" onclick="calc('minus')">-</button>
+          <button type="button" class="btn  btn-md" onclick="calc('div')">/</button>
+          <button type="button" class="btn  btn-md" onclick="calc('mult')">x</button>
+          <button type="button" class="btn  btn-md" onclick="calc('sqrt')">√</button>
+          <button type="button" class="btn  btn-md" onclick="calc('log')">log</button>
+          <button type="button" class="btn  btn-md" onclick="calc('mod')">%</button>
+          <button type="button" class="btn  btn-md" onclick="calc('sin')">sin</button>
+          <button type="button" class="btn  btn-md" onclick="calc('cos')">cos</button>
+          <button type="button" class="btn  btn-md" onclick="calc('tan')">tan</button>
+          <button type="button" class="btn  btn-md" onclick="calc('pow')">^</button>
+        </div>
+        <button type="button" class="btn btn-secondary btn-md" onclick="clearInputs()" style="width: 100%;">Clear</button>
+    </form>
+  </div>
+
+  <script>
+    function calc(operation) {
+      const valueOne = parseFloat(document.getElementById("input1").value);
+      const valueTwo = parseFloat(document.getElementById("input2").value);
+      const result = document.getElementById("result");
+      let hasil = 0;
+
+      switch (operation) {
+        case "minus":
+          hasil = valueOne - valueTwo;
+          break;
+        case "plus":
+          hasil = valueOne + valueTwo;
+          break;
+        case "div":
+          hasil = valueOne / valueTwo;
+          break;
+        case "mult":
+          hasil = valueOne * valueTwo;
+          break;
+        case "sqrt":
+          hasil = Math.sqrtrt(valueOne);
+          break;
+        case "log":
+          hasil = Math.log(valueOne);
+          break;
+        case "mod":
+          hasil = valueOne % valueTwo;
+          break;
+        case "sin":
+          hasil = Math.sin(valueOne);
+          break;
+        case "cos":
+          hasil = Math.cos(valueOne);
+          break;
+        case "tan":
+          hasil = Math.tan(valueOne);
+          break;
+        case "pow":
+          hasil = Math.pow(valueOne, valueTwo);
+          break;
+      }
+
+      result.value = isNaN(hasil) ? "Enter valid numbers" : hasil;
+    }
+
+    function clearInputs() {
+      document.getElementById("input1").value = "";
+      document.getElementById("input2").value = "";
+      document.getElementById("result").value = "";
+    }
+  </script>
+</body>
+</html>
